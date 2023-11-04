@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn {
+        @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+    }
+
+    .body {
+        @apply bg-gray-100;
+    }
+
+    .container {
+        @apply relative mx-auto p-4 max-w-[104rem] w-full;
+    }
+}
+
+@layer utilities {
+    .btn-blue {
+        @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+    }
+}
+
+@layer base {
+    h1 {
+        @apply text-2xl;
+    }
+
+    p {
+        @apply text-gray-700 text-lg leading-7;
+    }
+}
+
+.body {
+    background-color: #ececec;
+}
+
+.mySwiper {
+    position: relative;
+    width: 100%;
+    height: 80%;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-pagination.swiper-pagination-bullets.swiper-pagination-horizontal {
+    position: absolute;
+    bottom: 20%;
+}
+
+.swiper-pagination-bullet {
+    width: 13px !important;
+    height: 13px !important;
+    border-radius: 50% !important;
+    background-color: #171717 !important;
+    margin: 0 5px !important;
+    cursor: pointer !important;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #0bbfe8 !important;
+}
+
+.darked__bg::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(23, 23, 23, 0.47);
+}
+
+.image_full {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
