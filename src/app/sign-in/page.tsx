@@ -83,7 +83,7 @@ export default function Login() {
         reset();
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       alert('Login failed!');
     }
   };

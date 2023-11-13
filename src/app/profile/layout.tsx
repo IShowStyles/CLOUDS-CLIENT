@@ -33,9 +33,11 @@ const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
 
   const fetchStatus = async () => {
     if (typeof window === 'undefined') return;
+    console.log(JSON.parse(localStorage.getItem('user') || '{}').email, 'email');
     const status = await axios
       .get(
-        'https://localhost:3049/api/email/is-confirmed?email=' + JSON.parse(localStorage.getItem('user') || '{}').email,
+        `${process.env.NEXT_PUBLIC_API_URL}/email/is-confirmed?email=` +
+          JSON.parse(localStorage.getItem('user') || '{}').email,
       )
       .then((res) => res.data);
     return status;
@@ -55,6 +57,7 @@ const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
     const at = JSON.parse(localStorage.getItem('access_token') || '{}');
     const rf = JSON.parse(localStorage.getItem('refresh_token') || '{}');
     const st = JSON.parse(localStorage.getItem('status') || '{}');
+    console.log(users, 'users');
     const isLoggedIn = !!users;
     if (!isLoggedIn || !at.length || !rf.length) {
       setUser({

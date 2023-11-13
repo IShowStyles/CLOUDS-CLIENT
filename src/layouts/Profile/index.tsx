@@ -10,7 +10,7 @@ const ProfileLayout: FC<IProfileLayout> = ({ data }) => {
 
   return (
     <>
-      <AsideProfile show={() => setOpen(true)} close={() => setOpen(false)} isOpen={sidebarOpen} data={data} />
+      <AsideProfile show={() => setOpen(true)} close={() => setOpen(false)} isOpen={sidebarOpen} />
     </>
   );
 };

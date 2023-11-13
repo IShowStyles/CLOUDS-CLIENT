@@ -30,10 +30,8 @@ const animations: Variants = {
   },
 };
 
-const BgAnimation = ({ isOpen, path, completed }: { isOpen: boolean, path: string, completed: () => void }) => {
-  const {
-    mounted,
-  } = useMount(isOpen);
+const BgAnimation = ({ isOpen, path, completed }: { isOpen: boolean; path: string; completed: () => void }) => {
+  const { mounted } = useMount(isOpen);
   useEffect(() => {
     console.log('isOpen is noMount', isOpen && !mounted);
     console.log('isOpen', isOpen);
@@ -44,7 +42,7 @@ const BgAnimation = ({ isOpen, path, completed }: { isOpen: boolean, path: strin
   return (
     <AnimatePresence>
       <motion.div
-        className='absolute top-[64px] z-70 right-0 left-0 bottom-0 w-full h-full darked__bg'
+        className="absolute top-[64px] z-70 right-0 left-0 bottom-0 w-full h-full darked__bg"
         style={{
           width: '100vw',
           height: '85vh',
@@ -55,7 +53,7 @@ const BgAnimation = ({ isOpen, path, completed }: { isOpen: boolean, path: strin
         animate={isOpen ? 'entering' : 'exiting'}
         transition={{ duration: 2.25, ease: 'linear' }}
       >
-        <img className={"image_full"} src={path} alt='' />
+        <img className={'image_full'} src={path} alt="" />
       </motion.div>
     </AnimatePresence>
   );
