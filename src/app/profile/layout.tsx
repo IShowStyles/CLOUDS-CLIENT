@@ -6,14 +6,6 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import AsideProfile from '@/components/AsideProfile';
 
-// const fetchStatus = async () => {
-//   if (typeof window === 'undefined') return;
-//   const status = await axios
-//     .get('https://localhost:3049/api/email/is-confirmed?email=' + JSON.parse(localStorage.getItem('user') || '{}').email)
-//     .then((res) => res.data);
-//   return status;
-// };
-
 const ProfileLayout = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setOpen] = React.useState(true);
   const {

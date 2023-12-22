@@ -5,11 +5,32 @@ import CommonButton from '@/components/ui/CommonButton';
 import { useFetchStatus } from '@/hooks/useFetchStatus';
 import userStore from '@/store/store';
 import { useRouter } from 'next/navigation';
+import { $api } from '@/service/http';
+import axios from "axios";
 
 const ActivatePage = () => {
   const router = useRouter();
   const [locked, setLock] = useState<boolean>(false);
   const { isActivatedStatus, refetch } = useFetchStatus();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLock(false);
+    }, 1500);
+
+    return () => {
+      setLock(false);
+    };
+  }, [locked]);
+
+  const email = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('user') || '{}').email : null;
+  const resendEmail = async () => {
+    try {
+      await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/email/get-confirmation-link?email=${email}`);
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div>
@@ -31,6 +52,12 @@ const ActivatePage = () => {
             isDisabled={locked}
             text={'check confirmation'}
             onClick={refetch}
+            classes={'bg-sky-100 mt-8 max-w-[20rem] text-gray-700 px-5 py-2 border-sky-600 border-2'}
+          />
+          <CommonButton
+            isDisabled={locked}
+            text={'Resend Actvation Link'}
+            onClick={resendEmail}
             classes={'bg-sky-100 mt-8 max-w-[20rem] text-gray-700 px-5 py-2 border-sky-600 border-2'}
           />
         </div>

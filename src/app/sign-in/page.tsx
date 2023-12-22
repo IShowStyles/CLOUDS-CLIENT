@@ -72,7 +72,6 @@ export default function Login() {
         setDataLS(res.data);
         setIsLoggedIn(true);
         setUser({ email: data.email, name: data.name });
-        console.log(isActive, 'isActive');
         if (isActive) {
           return router.push('/profile');
         }

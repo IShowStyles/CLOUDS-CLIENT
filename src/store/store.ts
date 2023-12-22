@@ -35,7 +35,13 @@ const initialState: State = {
 
 const userStore = create<State & Actions>((set) => ({
   ...initialState,
-  setUser: (user: UserType) => set({ user }),
+  setUser: (user: UserType) =>
+    set({
+      user: {
+        name: user.name,
+        email: user.email,
+      },
+    }),
   setIsLoggedIn: (isLoggedIn: boolean) => set({ isLoggedIn }),
   checkAuth: async (email: string, accessToken: string, refreshToken: string) => {
     initialState.isLoading = true;
